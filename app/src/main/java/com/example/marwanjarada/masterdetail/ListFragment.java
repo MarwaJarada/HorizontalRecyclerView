@@ -37,14 +37,14 @@ public class ListFragment extends Fragment {
 
         listView.setLayoutManager(layoutManager);
 
+
+
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), items, new RecyclerAdapter.CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Intent intent = new Intent(getContext(),DetailActivity.class);
-                startActivity(intent);
-                Toast.makeText(getContext(), "Item clicked", Toast.LENGTH_LONG).show();
-            }
+                            }
         });
+
 
         listView.setAdapter(adapter);
 

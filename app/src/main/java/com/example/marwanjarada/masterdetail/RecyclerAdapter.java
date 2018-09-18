@@ -40,6 +40,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
 
+
     @NonNull
     @Override
     public RecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,7 +49,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         rootView = inflater.inflate(R.layout.item_row, parent, false);
 
         final ViewHolder viewHolder = new ViewHolder(rootView);
-
+        rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCallback.onItemClick(v , viewHolder.getPosition());
+                Toast.makeText(mContext,"d",Toast.LENGTH_LONG).show();
+            }
+        });
 
         return viewHolder;
     }
