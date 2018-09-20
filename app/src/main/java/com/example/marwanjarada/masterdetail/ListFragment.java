@@ -64,7 +64,7 @@ public class ListFragment extends Fragment {
 
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(getContext(), "Item Clicked" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Item Clicked " + position, Toast.LENGTH_SHORT).show();
             }
             });
         listView.setAdapter(adapter);
