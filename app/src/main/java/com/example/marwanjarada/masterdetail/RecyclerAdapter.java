@@ -55,10 +55,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int poo = positionItem;
-                Toast.makeText(mContext,""+poo,Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(mContext,DetailActivity.class);
-                mContext.startActivity(intent);
+                mCallback.onItemClick(v, viewHolder.getPosition());
             }
         });
 
@@ -68,7 +65,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
 
     public interface CustomItemClickListener {
-        void onItemClick(Item item);
+        void onItemClick(View view, int position);
 
     }
 
@@ -78,7 +75,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         positionItem=position;
         Item item = mItem.get(position);
         holder.textView_title.setText(item.getTitle());
-        mCallback.onItemClick(item);
 
     }
 

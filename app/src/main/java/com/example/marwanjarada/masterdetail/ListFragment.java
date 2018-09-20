@@ -63,7 +63,8 @@ public class ListFragment extends Fragment {
         RecyclerAdapter adapter = new RecyclerAdapter(getContext(), items, new RecyclerAdapter.CustomItemClickListener() {
 
             @Override
-            public void onItemClick(Item item) {
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getContext(), "Item Clicked" + position, Toast.LENGTH_SHORT).show();
             }
             });
         listView.setAdapter(adapter);
