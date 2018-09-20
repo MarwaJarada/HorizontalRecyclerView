@@ -30,9 +30,8 @@ public class ListActivity extends AppCompatActivity implements com.example.marwa
 
     @Override
     public void onItemClicked(Item item) {
-            Intent intent = new Intent(this, DetailActivity.class);
+        Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra("title", item.getTitle());
         startActivity(intent);
     }
     }
-

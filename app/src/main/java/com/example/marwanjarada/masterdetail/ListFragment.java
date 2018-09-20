@@ -2,6 +2,7 @@ package com.example.marwanjarada.masterdetail;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,33 +20,52 @@ import java.util.List;
 
 public class ListFragment extends Fragment {
 
-    RecyclerView mRecyclerView;
     ItemClickListener mCallBack;
+    Context mContext;
 
-    ArrayList<Item> category = new ArrayList<>();
+
+    public ArrayList<Item> getCategoryItems(){
+        ArrayList<Item> categoryItems = new ArrayList<>();
+        categoryItems.add(new Item("Cooking"));
+        categoryItems.add(new Item("Computer"));
+        categoryItems.add(new Item("Software"));
+        return  categoryItems;
+    }
+
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-      //  return super.onCreateView(inflater, container, savedInstanceState);
-        View rootView = inflater.inflate(R.layout.fragment_list,container,false);
-        RecyclerView listView = rootView.findViewById(R.id.listView_items);
-        final ArrayList<Item> items = Item.getAllItems();
+
+        final View rootView = inflater.inflate(R.layout.fragment_list,container,false);
+        final RecyclerView listView = rootView.findViewById(R.id.listView_items);
+        final ArrayList<Item> items = getCategoryItems();
 
         RecyclerView.LayoutManager layoutManager=
                 new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL, false);
-
         listView.setLayoutManager(layoutManager);
 
-
-
-        RecyclerAdapter adapter = new RecyclerAdapter(getContext(), items, new RecyclerAdapter.CustomItemClickListener() {
+        listView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(View v, int position) {
-                            }
+            public void onClick(View v) {
+
+//                int itemPosition = listView.getChildLayoutPosition(v);
+//                Item item = items.get(itemPosition);
+//                Toast.makeText(mContext, item.getTitle(), Toast.LENGTH_LONG).show();
+
+
+
+            }
         });
 
 
+        RecyclerAdapter adapter = new RecyclerAdapter(getContext(), items, new RecyclerAdapter.CustomItemClickListener() {
+
+            @Override
+            public void onItemClick(Item item) {
+            }
+            });
         listView.setAdapter(adapter);
 
 
